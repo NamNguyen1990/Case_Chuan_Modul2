@@ -70,7 +70,7 @@ public class QLPhong {
             }
         }
         if (check == false) {
-            System.out.println(ANSI_RED + "Nhập không đúng (không có Phòng này)" + ANSI_RESET);
+            System.out.println(ANSI_RED + "Nhập không đúng (không có Phòng nào có giá này)" + ANSI_RESET);
         }
     }
     public int timKiemPhongSo1 (int phongSo) {  // Cái này trả về vị trí (chỉ vị trí ko hiển thị thông tin) phục vụ cho việc sửa theo phòng Số nhập vào
