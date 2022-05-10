@@ -1,4 +1,5 @@
 import manage.QLDKDN;
+import manage.QLPhong;
 import model.DKDN;
 import input.CkeckRegex;
 
@@ -10,6 +11,10 @@ public class Main {
         QLDKDN qldkdn = new QLDKDN();
         Scanner sc = new Scanner(System.in);
         Scanner nhapChu = new Scanner(System.in);
+        Scanner nhapChu1 = new Scanner(System.in);
+        Scanner nhapChu2 = new Scanner(System.in);
+
+
         int luaChon = -1;
         System.out.println("=====Menu_ĐăngKý_ĐăngNhập====");
         System.out.println("0 - Thoát khỏi chương trình");
@@ -79,13 +84,97 @@ public class Main {
                         }
                         if (luaChon1 == 1) {
 
+                            QLPhong qlPhong = new QLPhong();
+                            int luaChon2 = -1;
+
+                            System.out.println("=====Menu Chọn Phòng====");
+                            System.out.println("0 - Thoát");
+                            System.out.println("1 - Hiển thị số lượng phòng");
+                            System.out.println("2 - Thêm 1 phòng mới");
+                            System.out.println("3 - Sửa thông tin phòng theo số phòng");
+                            System.out.println("4 - Hiển thị Phòng Còn/Phòng Hết");
+                            System.out.println("5 - Cập nhật trạng thái phòng (Từ Còn phòng --> Hết phòng hoặc ngược lại)");
+                            System.out.println("6 - Tìm Phòng theo số phòng (hiển thị 1 Phòng duy nhất)");
+                            System.out.println("7 - Tìm Phòng theo giá {hiển thị" + " " + ANSI_RED + "(những phòng)" + ANSI_RESET + " " + "cùng mức giá}");
+                            System.out.println("8 - Xem lại danh sách Menu chọn Phòng");
+
+                            do {
+                                boolean check2 = false;
+                                while (!check2) {
+                                    System.out.println("Mời bạn chọn chức năng");
+                                    try {
+                                        luaChon = sc.nextInt();
+                                        if (luaChon<0 || luaChon >8) throw new Exception();
+                                        check2 = true;
+                                    } catch (InputMismatchException e) {
+                                        System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
+                                        sc.nextLine();
+                                    } catch (Exception e) {
+                                        System.out.println(ANSI_RED + "Chỉ được nhập số từ 0 --> 8" + ANSI_RESET);
+                                    }
+                                }
+
+                                if (luaChon2 == 1) {
+
+                                    System.out.println(ANSI_BLUE + "====Danh sách phòng====" + ANSI_RESET);
+                                    qlPhong.hienThi();
+
+                                }
+                                else if (luaChon2 == 2) {
+                                    System.out.println("Mời nhập thông tin phòng mới");
+                                    int phongSo = -1;
+                                    boolean check3 = false;
+                                    while (!check3) {
+                                        System.out.println("Nhập vào phòng số");
+                                        try {
+                                            phongSo = sc.nextInt();
+                                            check3 = true;
+                                        } catch (Exception e) {
+                                            System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
+                                            sc.nextLine();
+                                        }
+                                    }
 
 
 
 
 
 
+                                }
+                                else if (luaChon2 == 3) {
 
+
+
+
+                                }
+                                else if (luaChon2 == 4) {
+
+
+
+                                }
+                                else if (luaChon2 == 5) {
+
+
+
+
+                                }
+                                else if (luaChon2 == 6) {
+
+
+
+                                }
+                                else if (luaChon2 == 7) {
+
+
+
+                                }
+                                else if (luaChon2 == 8) {
+
+
+
+                                }
+
+                            } while (luaChon2 != 0);
 
 
                         }
