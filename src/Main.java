@@ -1,8 +1,10 @@
 import file.GhiDocFile1;
 import manage.QLDKDN;
+import manage.QLHoaDon;
 import manage.QLPhong;
 import model.DKDN;
 import input.CkeckRegex;
+import model.HoaDon;
 import model.Phong;
 
 import java.io.IOException;
@@ -330,7 +332,9 @@ public class Main {
                         }
                         else if (luaChon1 == 2) {
 
-                            QLPhong qlPhong = new QLPhong();
+                            QLHoaDon qlHoaDon = new QLHoaDon();
+                            QLPhong qlPhong1 = new QLPhong();
+
                             int luaChon3 = -1;
 
                             System.out.println("=====Menu Hóa Đơn====");
@@ -344,13 +348,13 @@ public class Main {
                             System.out.println("7 - Xem lại Menu!");
 
                             do {
-                                boolean check = false;
-                                while (!check) {
+                                boolean check12 = false;
+                                while (!check12) {
                                     System.out.println("Mời bạn chọn chức năng");
                                     try {
-                                        luaChon = sc.nextInt();
-                                        if (luaChon<0 || luaChon >7) throw new Exception();
-                                        check = true;
+                                        luaChon3 = sc.nextInt();
+                                        if (luaChon3<0 || luaChon3>7) throw new Exception();
+                                        check12 = true;
                                     } catch (InputMismatchException e) {
                                         System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
                                         sc.nextLine();
@@ -361,9 +365,62 @@ public class Main {
 
                                 if (luaChon3 == 1) {
 
+                                    System.out.println(ANSI_BLUE + "====Danh sách hóa đơn!====" + ANSI_RESET);
+                                    qlHoaDon.hienThiFull();
 
                                 }
                                 else if (luaChon3 == 2) {
+
+                                    System.out.println("Mời nhập vào thông tin hóa đơn");
+                                    System.out.println("Mời nhập số CMND của khách chơi phòng");
+                                    String soCMND = nhapChu.nextLine();
+                                    System.out.println("Nhập họ tên khách làng chơi:");
+                                    String ten = nhapChu.nextLine();
+
+                                    int tgVao = -1;
+                                    boolean check9 = false;
+                                    while (!check9) {
+                                        System.out.println("Nhập thời gian khách vào phòng");
+                                        try {
+                                            tgVao = sc.nextInt();
+                                            check9 = true;
+                                        } catch (Exception e) {
+                                            System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
+                                            sc.nextLine();
+                                        }
+                                    }
+
+                                    int tgRa = -1;
+                                    boolean check10 = false;
+                                    while (!check10) {
+                                        System.out.println("Nhập thời gian khách trả phòng");
+                                        try {
+                                            tgRa = sc.nextInt();
+                                            check10 = true;
+                                        } catch (Exception e) {
+                                            System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
+                                            sc.nextLine();
+                                        }
+                                    }
+
+                                    int tAnUong = -1;
+                                    boolean check11 = false;
+                                    while (!check11) {
+                                        System.out.println("Nhập tiền khách ăn uống trong phòng");
+                                        try {
+                                            tAnUong = sc.nextInt();
+                                            check11 = true;
+                                        } catch (Exception e) {
+                                            System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
+                                            sc.nextLine();
+                                        }
+                                    }
+
+                                    System.out.println("Chọn phòng khách vào: (Nhập số phòng)");
+                                    qlPhong1.timKiemHetPhong();
+                                    int idOfPhong1 = sc.nextInt();
+                                    Phong phong5 = qlPhong1.timKiemTheoPhong(idOfPhong1);
+                                    qlHoaDon.them(new HoaDon(soCMND,ten,tgVao,tgRa,tAnUong,phong5));
 
                                 }
                                 else if (luaChon3 == 3) {
@@ -373,12 +430,32 @@ public class Main {
 
                                 }
                                 else if (luaChon3 == 5) {
+                                    int sum = 0;
+                                    System.out.println("Nhập vào số CMND của khách");
+                                    String soCMND = nhapChu.nextLine();
+                                    qlHoaDon.timKiemCMND1(soCMND);
+                                    System.out.println("Nhập số phòng khách vào mua vui: ");
+                                    int idOfPhong = sc.nextInt();
+
+                                    sum = QLPhong.phongList.get(qlPhong1.timKiemPhongSo1(idOfPhong)).getGiaPhong()*(qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).getTgRa() - qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).getTgVao()) + qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).gettAnUong();
+                                    System.out.println("Tổng tiền khách phải nôn ra là: " + sum);
+                                    qlHoaDon.xoaHD(soCMND);
 
                                 }
                                 else if (luaChon3 == 6) {
 
                                 }
                                 else if (luaChon3 == 7) {
+
+                                    System.out.println("=====Menu Hóa Đơn====");
+                                    System.out.println("0 - Thoát");
+                                    System.out.println("1 - Hiển thị danh sách hóa đơn");
+                                    System.out.println("2 - Tạo hóa đơn");
+                                    System.out.println("3 - Sửa thông tin hóa đơn theo số CMND của khách");
+                                    System.out.println("4 - Tìm kiếm hóa đơn theo khoảng thời gian");
+                                    System.out.println("5 - Tính tiền hóa đơn - Xóa luôn hóa đơn");
+                                    System.out.println("6 - Xuất hoá đơn(xuất file csv)");
+                                    System.out.println("7 - Xem lại Menu!");
 
                                 }
 

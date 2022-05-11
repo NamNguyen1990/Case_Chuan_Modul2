@@ -39,6 +39,53 @@ public class QLHoaDon {
         System.out.println(ANSI_BLUE + "Bạn đã thêm thành công 1 hóa đơn mới" + ANSI_RESET);
     }
 
+    public void xoaHD (String soCMND) {
+        int indexOf = timKiemCMND(soCMND);
+        if (indexOf == -1) {
+            System.out.println("Không có số CMND này");
+        } else {
+            hoaDonList.remove(indexOf);
+        }
+    }
+
+    public int timKiemCMND (String soCMND) {  // Cái này trả về vị trí (chỉ vị trí ko hiển thị thông tin) phục vụ cho việc sửa theo Số CMND nhập vào
+        for (int i = 0; i < hoaDonList.size(); i++) {
+            if (hoaDonList.get(i).getSoCMND().equals(soCMND)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void timKiemCMND1 (String soCMND) {
+        boolean check = false;
+        for (int i=0; i<hoaDonList.size(); i++) {
+            if (hoaDonList.get(i).getSoCMND().equals(soCMND)) {
+                System.out.println(hoaDonList.get(i));
+                check = true;
+            }
+        }
+        if (check == false) {
+            System.out.println(ANSI_RED + "Nhập không đúng (không có số CMND này trong hóa đơn)" + ANSI_RESET);
+        }
+    }
+
+    public void hienThiFull() {
+        int soHD = 0;
+        boolean check = false;
+        for (int i=0; i<hoaDonList.size(); i++) {
+            System.out.println(hoaDonList.get(i));
+            soHD++;
+            System.out.println("Số hóa đơn thứ: " + soHD);
+            System.out.println("------------------------------------------------------------");
+            check = true;
+        }
+
+        if (check == false) {
+            System.out.println(ANSI_RED + "Chưa có hóa đơn nào được thêm mới!" + ANSI_RESET);
+        }
+    }
+
 
 
 
