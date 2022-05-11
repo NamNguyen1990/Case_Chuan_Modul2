@@ -12,6 +12,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
         QLDKDN qldkdn = new QLDKDN();
+        CkeckRegex ckeckRegex = new CkeckRegex();
+
         Scanner sc = new Scanner(System.in);
         Scanner nhapChu = new Scanner(System.in);
         Scanner nhapChu1 = new Scanner(System.in);
@@ -45,9 +47,9 @@ public class Main {
 
             if (luaChon == 1) {
 //                System.out.println("Nhập tên đăng ký");
-                String tenDK = qldkdn.checkTenDK();
+                String tenDK = ckeckRegex.checkTenDK();
 //                System.out.println("Nhập mật khẩu đăng ký");
-                String matKhauDK = qldkdn.matKhauDK();
+                String matKhauDK = ckeckRegex.matKhauDK();
                 System.out.println(ANSI_BLUE + "Bạn đã đăng ký thành công" + ANSI_RESET);
                 System.out.println("Chọn đăng nhập để vào chương trình chính");
 
@@ -356,9 +358,9 @@ public class Main {
                 System.out.println("Nhập lại mật khẩu cũ");
                 String matkhauDNS = nhapChu.nextLine();
                 System.out.println("Nhập tên đăng nhập mới");
-                String tenDNM = qldkdn.checkTenDK();
+                String tenDNM = ckeckRegex.checkTenDK();
                 System.out.println("Nhập mật khẩu mới");
-                String matkhauDNM = qldkdn.matKhauDK();
+                String matkhauDNM = ckeckRegex.matKhauDK();
 
                 DKDN dkdn1 = new DKDN(tenDNM,matkhauDNM);
                 qldkdn.suaTen(tenDNS,matkhauDNS,dkdn1);
