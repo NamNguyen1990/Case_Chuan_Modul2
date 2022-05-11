@@ -73,6 +73,15 @@ public class QLPhong {
             System.out.println(ANSI_RED + "Nhập không đúng (không có Phòng nào có giá này)" + ANSI_RESET);
         }
     }
+
+    public void timKiemKhoangGia (int giaPhongThap,int giaPhongCao) {    // Cái này nhập vào khoảng giá nào đến giá nào.
+        for (int i = 0; i < phongList.size(); i++) {
+            if (giaPhongThap <= phongList.get(i).getGiaPhong() && giaPhongCao >= phongList.get(i).getGiaPhong()){
+                System.out.println(phongList.get(i));
+            }
+        }
+    }
+
     public int timKiemPhongSo1 (int phongSo) {  // Cái này trả về vị trí (chỉ vị trí ko hiển thị thông tin) phục vụ cho việc sửa theo phòng Số nhập vào
         for (int i = 0; i < phongList.size(); i++) {
             if (phongList.get(i).getPhongSo() == phongSo) {
@@ -81,6 +90,11 @@ public class QLPhong {
         }
         return -1;
     }
+
+    public Phong timKiemTheoPhong (int phongSo) {
+        return phongList.get(timKiemPhongSo1(phongSo));
+    }
+
     public void suaPhongSo (int phongSo, Phong phong) { // Cái này sửa theo phòng Số nhập vào
         int indexOf = timKiemPhongSo1(phongSo);
         if (indexOf == -1) {

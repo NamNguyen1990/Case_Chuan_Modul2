@@ -102,7 +102,8 @@ public class Main {
                             System.out.println("5 - Cập nhật trạng thái phòng (Từ Còn phòng --> Hết phòng hoặc ngược lại)");
                             System.out.println("6 - Tìm Phòng theo số phòng (hiển thị 1 Phòng duy nhất)");
                             System.out.println("7 - Tìm Phòng theo giá {hiển thị" + " " + ANSI_RED + "(những phòng)" + ANSI_RESET + " " + "cùng mức giá}");
-                            System.out.println("8 - Xem lại danh sách Menu chọn Phòng");
+                            System.out.println("8 - Tìm Phòng theo khoảng giá {hiển thị" + " " + ANSI_RED + "(những phòng)" + ANSI_RESET + " " + "trong khoảng giá nhập vào}");
+                            System.out.println("9 - Xem lại danh sách Menu chọn Phòng");
 
                             do {
                                 boolean check2 = false;
@@ -110,13 +111,13 @@ public class Main {
                                     System.out.println("Mời bạn chọn chức năng");
                                     try {
                                         luaChon2 = sc.nextInt();
-                                        if (luaChon2<0 || luaChon2 >8) throw new Exception();
+                                        if (luaChon2<0 || luaChon2 >9) throw new Exception();
                                         check2 = true;
                                     } catch (InputMismatchException e) {
                                         System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
                                         sc.nextLine();
                                     } catch (Exception e) {
-                                        System.out.println(ANSI_RED + "Chỉ được nhập số từ 0 --> 8" + ANSI_RESET);
+                                        System.out.println(ANSI_RED + "Chỉ được nhập số từ 0 --> 9" + ANSI_RESET);
                                     }
                                 }
 
@@ -298,7 +299,17 @@ public class Main {
                                     qlPhong.timKiemPhongGia(giaPhong);
 
                                 }
+
                                 else if (luaChon2 == 8) {
+                                    System.out.println("Nhập vào giá thấp nhất");
+                                    int giaPhongThap = sc.nextInt();
+                                    System.out.println("Nhập vào giá cao nhất");
+                                    int giaPhongCao = sc.nextInt();
+
+                                    qlPhong.timKiemKhoangGia(giaPhongThap,giaPhongCao);
+                                }
+
+                                else if (luaChon2 == 9) {
 
                                     System.out.println("=====Menu Chọn Phòng====");
                                     System.out.println("0 - Thoát");
@@ -309,15 +320,72 @@ public class Main {
                                     System.out.println("5 - Cập nhật trạng thái phòng (Từ Còn phòng --> Hết phòng hoặc ngược lại)");
                                     System.out.println("6 - Tìm Phòng theo số phòng (hiển thị 1 Phòng duy nhất)");
                                     System.out.println("7 - Tìm Phòng theo giá {hiển thị" + " " + ANSI_RED + "(những phòng)" + ANSI_RESET + " " + "cùng mức giá}");
-                                    System.out.println("8 - Xem lại danh sách Menu chọn Phòng");
+                                    System.out.println("8 - Tìm Phòng theo khoảng giá {hiển thị" + " " + ANSI_RED + "(những phòng)" + ANSI_RESET + " " + "trong khoảng giá nhập vào}");
+                                    System.out.println("9 - Xem lại danh sách Menu chọn Phòng");
 
                                 }
 
                             } while (luaChon2 != 0);
 
-
                         }
                         else if (luaChon1 == 2) {
+
+                            QLPhong qlPhong = new QLPhong();
+                            int luaChon3 = -1;
+
+                            System.out.println("=====Menu Hóa Đơn====");
+                            System.out.println("0 - Thoát");
+                            System.out.println("1 - Hiển thị danh sách hóa đơn");
+                            System.out.println("2 - Tạo hóa đơn");
+                            System.out.println("3 - Sửa thông tin hóa đơn theo số CMND của khách");
+                            System.out.println("4 - Tìm kiếm hóa đơn theo khoảng thời gian");
+                            System.out.println("5 - Tính tiền hóa đơn - Xóa luôn hóa đơn");
+                            System.out.println("6 - Xuất hoá đơn(xuất file csv)");
+                            System.out.println("7 - Xem lại Menu!");
+
+                            do {
+                                boolean check = false;
+                                while (!check) {
+                                    System.out.println("Mời bạn chọn chức năng");
+                                    try {
+                                        luaChon = sc.nextInt();
+                                        if (luaChon<0 || luaChon >7) throw new Exception();
+                                        check = true;
+                                    } catch (InputMismatchException e) {
+                                        System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
+                                        sc.nextLine();
+                                    } catch (Exception e) {
+                                        System.out.println(ANSI_RED + "Chỉ được nhập số từ 0 --> 7" + ANSI_RESET);
+                                    }
+                                }
+
+                                if (luaChon3 == 1) {
+
+
+                                }
+                                else if (luaChon3 == 2) {
+
+                                }
+                                else if (luaChon3 == 3) {
+
+                                }
+                                else if (luaChon3 == 4) {
+
+                                }
+                                else if (luaChon3 == 5) {
+
+                                }
+                                else if (luaChon3 == 6) {
+
+                                }
+                                else if (luaChon3 == 7) {
+
+                                }
+
+                            } while (luaChon3 != 0);
+
+
+
 
 
 
@@ -326,9 +394,6 @@ public class Main {
 
                         }
                         else if (luaChon1 == 3) {
-
-
-
 
 
 
@@ -344,9 +409,6 @@ public class Main {
 
 
                     } while (luaChon1 != 0);
-
-
-
 
                 }
 
