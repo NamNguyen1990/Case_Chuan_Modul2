@@ -174,7 +174,6 @@ public class Main {
                                     if (result == b) {
                                         System.exit(0);
                                     }
-
                                 }
                                 else if (luaChon2 == 3) {
 
@@ -342,7 +341,7 @@ public class Main {
                             System.out.println("1 - Hiển thị danh sách hóa đơn");
                             System.out.println("2 - Tạo hóa đơn");
                             System.out.println("3 - Sửa thông tin hóa đơn theo số CMND của khách");
-                            System.out.println("4 - Tìm kiếm hóa đơn theo khoảng thời gian");
+                            System.out.println("4 - Tìm kiếm hóa đơn theo khoảng thời gian (Tìm kiếm theo thời gian trả phòng)");
                             System.out.println("5 - Tính tiền hóa đơn - Xóa luôn hóa đơn");
                             System.out.println("6 - Xuất hoá đơn(xuất file csv)");
                             System.out.println("7 - Xem lại Menu!");
@@ -427,20 +426,35 @@ public class Main {
 
                                 }
                                 else if (luaChon3 == 4) {
+                                    System.out.println("Nhập vào khoảng thời gian bắt đầu tìm");
+                                    int tGianThap = sc.nextInt();
+                                    System.out.println("Nhập vào khoảng thời gian kết thúc tìm");
+                                    int tGianCao = sc.nextInt();
+
+                                    qlHoaDon.timKiemKhoangTGian(tGianThap,tGianCao);
 
                                 }
                                 else if (luaChon3 == 5) {
                                     int sum = 0;
                                     System.out.println("Nhập vào số CMND của khách");
                                     String soCMND = nhapChu.nextLine();
-                                    qlHoaDon.timKiemCMND1(soCMND);
-                                    System.out.println("Nhập số phòng khách vào mua vui: ");
-                                    int idOfPhong = sc.nextInt();
-
-                                    sum = QLPhong.phongList.get(qlPhong1.timKiemPhongSo1(idOfPhong)).getGiaPhong()*(qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).getTgRa() - qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).getTgVao()) + qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).gettAnUong();
-                                    System.out.println("Tổng tiền khách phải nôn ra là: " + sum);
-                                    qlHoaDon.xoaHD(soCMND);
-
+                                    if (qlHoaDon.timKiemCMND(soCMND) != -1) {
+                                        System.out.println("Nhập số phòng khách vào mua vui: ");
+                                        qlHoaDon.timKiemCMND1(soCMND);
+                                        int idOfPhong = sc.nextInt();
+                                        if(qlPhong1.timKiemPhongSo1(idOfPhong) != -1) {
+                                            sum = QLPhong.phongList.get(qlPhong1.timKiemPhongSo1(idOfPhong)).getGiaPhong()*(qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).getTgRa() - qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).getTgVao()) + qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).gettAnUong();
+                                            System.out.println("Tổng tiền khách phải nôn ra là: " + sum);
+                                            qlHoaDon.xoaHD(soCMND);
+                                        }
+                                        else {
+                                            System.out.println("Nhập sai phòng");
+                                        }
+                                    }
+                                    else {
+                                        System.out.println("Nhập sai số CMND");
+                                    }
+//                                    qlHoaDon.timKiemCMND(soCMND);
                                 }
                                 else if (luaChon3 == 6) {
 

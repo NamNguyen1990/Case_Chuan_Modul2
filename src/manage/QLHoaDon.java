@@ -85,6 +85,13 @@ public class QLHoaDon {
             System.out.println(ANSI_RED + "Chưa có hóa đơn nào được thêm mới!" + ANSI_RESET);
         }
     }
+    public void timKiemKhoangTGian (int tGianThap,int tGianCao) {    // Cái này nhập vào khoảng thời gian nào đến thời gian nào.
+        for (int i = 0; i < hoaDonList.size(); i++) {
+            if (tGianThap <= hoaDonList.get(i).getTgRa() && tGianCao >= hoaDonList.get(i).getTgRa()){
+                System.out.println(hoaDonList.get(i));
+            }
+        }
+    }
 
 
 
