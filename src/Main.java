@@ -302,11 +302,30 @@ public class Main {
                                 }
 
                                 else if (luaChon2 == 8) {
-                                    System.out.println("Nhập vào giá thấp nhất");
-                                    int giaPhongThap = sc.nextInt();
-                                    System.out.println("Nhập vào giá cao nhất");
-                                    int giaPhongCao = sc.nextInt();
-
+                                    int giaPhongThap = -1;
+                                    boolean check50 = false;
+                                    while (!check50) {
+                                        System.out.println("Nhập vào giá thấp nhất");
+                                        try {
+                                            giaPhongThap = sc.nextInt();
+                                            check50 = true;
+                                        } catch (Exception e) {
+                                            System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
+                                            sc.nextLine();
+                                        }
+                                    }
+                                    int giaPhongCao = -1;
+                                    boolean check51 = false;
+                                    while (!check51) {
+                                        System.out.println("Nhập vào giá cao nhất");
+                                        try {
+                                            giaPhongCao = sc.nextInt();
+                                            check51 = true;
+                                        } catch (Exception e) {
+                                            System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
+                                            sc.nextLine();
+                                        }
+                                    }
                                     qlPhong.timKiemKhoangGia(giaPhongThap,giaPhongCao);
                                 }
 
@@ -424,12 +443,85 @@ public class Main {
                                 }
                                 else if (luaChon3 == 3) {
 
+                                    System.out.println("Mời nhập số CMND trong hóa đơn cần sửa");
+                                    String soCMNDTim = nhapChu.nextLine();
+                                    System.out.println("Sửa số CMND này thành số:");
+                                    String soCMNDS = nhapChu.nextLine();
+                                    System.out.println("Họ tên khách làng chơi sửa thành:");
+                                    String tenS = nhapChu.nextLine();
+
+                                    int tgVaoS = -1;
+                                    boolean check31 = false;
+                                    while (!check31) {
+                                        System.out.println("Sửa thời gian khách vào phòng là:");
+                                        try {
+                                            tgVaoS = sc.nextInt();
+                                            check31 = true;
+                                        } catch (Exception e) {
+                                            System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
+                                            sc.nextLine();
+                                        }
+                                    }
+
+                                    int tgRaS = -1;
+                                    boolean check32 = false;
+                                    while (!check32) {
+                                        System.out.println("Sửa thời gian khách trả phòng là:");
+                                        try {
+                                            tgRaS = sc.nextInt();
+                                            check32 = true;
+                                        } catch (Exception e) {
+                                            System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
+                                            sc.nextLine();
+                                        }
+                                    }
+
+                                    int tAnUongS = -1;
+                                    boolean check33 = false;
+                                    while (!check33) {
+                                        System.out.println("Sửa tiền khách ăn uống trong phòng thành:");
+                                        try {
+                                            tAnUongS = sc.nextInt();
+                                            check33 = true;
+                                        } catch (Exception e) {
+                                            System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
+                                            sc.nextLine();
+                                        }
+                                    }
+
+                                    System.out.println("Sửa phòng khách vào là: (Nhập số phòng)");
+                                    qlPhong1.timKiemHetPhong();
+                                    int idOfPhong2 = sc.nextInt();
+                                    Phong phong10 = qlPhong1.timKiemTheoPhong(idOfPhong2);
+                                    qlHoaDon.suaHoaDon(soCMNDTim,new HoaDon(soCMNDS,tenS,tgVaoS,tgRaS,tAnUongS,phong10));
+
                                 }
                                 else if (luaChon3 == 4) {
-                                    System.out.println("Nhập vào khoảng thời gian bắt đầu tìm");
-                                    int tGianThap = sc.nextInt();
-                                    System.out.println("Nhập vào khoảng thời gian kết thúc tìm");
-                                    int tGianCao = sc.nextInt();
+                                    int tGianThap = -1;
+                                    boolean check20 = false;
+                                    while (!check20) {
+                                        System.out.println("Nhập vào khoảng thời gian bắt đầu tìm");
+                                        try {
+                                            tGianThap = sc.nextInt();
+                                            check20 = true;
+                                        } catch (Exception e) {
+                                            System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
+                                            sc.nextLine();
+                                        }
+                                    }
+
+                                    int tGianCao = -1;
+                                    boolean check21 = false;
+                                    while (!check21) {
+                                        System.out.println("Nhập vào khoảng thời gian kết thúc tìm");
+                                        try {
+                                            tGianCao = sc.nextInt();
+                                            check21 = true;
+                                        } catch (Exception e) {
+                                            System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
+                                            sc.nextLine();
+                                        }
+                                    }
 
                                     qlHoaDon.timKiemKhoangTGian(tGianThap,tGianCao);
 
@@ -454,7 +546,7 @@ public class Main {
                                     else {
                                         System.out.println("Nhập sai số CMND");
                                     }
-//                                    qlHoaDon.timKiemCMND(soCMND);
+
                                 }
                                 else if (luaChon3 == 6) {
 
@@ -466,7 +558,7 @@ public class Main {
                                     System.out.println("1 - Hiển thị danh sách hóa đơn");
                                     System.out.println("2 - Tạo hóa đơn");
                                     System.out.println("3 - Sửa thông tin hóa đơn theo số CMND của khách");
-                                    System.out.println("4 - Tìm kiếm hóa đơn theo khoảng thời gian");
+                                    System.out.println("4 - Tìm kiếm hóa đơn theo khoảng thời gian (Tìm kiếm theo thời gian trả phòng)");
                                     System.out.println("5 - Tính tiền hóa đơn - Xóa luôn hóa đơn");
                                     System.out.println("6 - Xuất hoá đơn(xuất file csv)");
                                     System.out.println("7 - Xem lại Menu!");

@@ -1,6 +1,7 @@
 package manage;
 
 import model.HoaDon;
+import model.Phong;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,10 +87,24 @@ public class QLHoaDon {
         }
     }
     public void timKiemKhoangTGian (int tGianThap,int tGianCao) {    // Cái này nhập vào khoảng thời gian nào đến thời gian nào.
+        boolean check = false;
         for (int i = 0; i < hoaDonList.size(); i++) {
             if (tGianThap <= hoaDonList.get(i).getTgRa() && tGianCao >= hoaDonList.get(i).getTgRa()){
                 System.out.println(hoaDonList.get(i));
             }
+        }
+        if (check == false) {
+            System.out.println(ANSI_RED + "Không có hóa đơn nào trong khoảng thời gian này!" + ANSI_RESET);
+        }
+    }
+
+    public void suaHoaDon (String soCMND, HoaDon hoaDon) {
+        int indexOf = timKiemCMND(soCMND);
+        if (indexOf == -1) {
+            System.out.println(ANSI_RED + "Không có số CMND nào như trên" + ANSI_RESET);
+        } else {
+            hoaDonList.set(indexOf, hoaDon);
+            System.out.println(ANSI_BLUE + "Bạn đã sửa thành công thông tin Hóa Đơn trên" + ANSI_RESET);
         }
     }
 

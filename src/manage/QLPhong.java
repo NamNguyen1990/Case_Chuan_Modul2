@@ -75,10 +75,14 @@ public class QLPhong {
     }
 
     public void timKiemKhoangGia (int giaPhongThap,int giaPhongCao) {    // Cái này nhập vào khoảng giá nào đến giá nào.
+        boolean check = false;
         for (int i = 0; i < phongList.size(); i++) {
             if (giaPhongThap <= phongList.get(i).getGiaPhong() && giaPhongCao >= phongList.get(i).getGiaPhong()){
                 System.out.println(phongList.get(i));
+                check = true;
             }
+        }if (check == false) {
+            System.out.println(ANSI_RED + "Không có phòng nào có giá tiền trong khoảng này" + ANSI_RESET);
         }
     }
 
