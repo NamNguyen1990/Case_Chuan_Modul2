@@ -38,7 +38,7 @@ public class Main {
                 System.out.println("Mời bạn chọn chức năng");
                 try {
                     luaChon = sc.nextInt();
-                    if (luaChon<0 || luaChon >5) throw new Exception();
+                    if (luaChon < 0 || luaChon > 5) throw new Exception();
                     check0 = true;
                 } catch (InputMismatchException e) {
                     System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
@@ -56,10 +56,9 @@ public class Main {
                 System.out.println(ANSI_BLUE + "Bạn đã đăng ký thành công" + ANSI_RESET);
                 System.out.println("Chọn đăng nhập để vào chương trình chính");
 
-                DKDN dkdn = new DKDN(tenDK,matKhauDK);
+                DKDN dkdn = new DKDN(tenDK, matKhauDK);
                 qldkdn.them(dkdn);
-            }
-            else if (luaChon == 2) {
+            } else if (luaChon == 2) {
                 System.out.println("Nhập tên đăng nhập");
                 String tenDN = nhapChu.nextLine();
                 System.out.println("Nhập mật khẩu đăng nhập");
@@ -82,7 +81,7 @@ public class Main {
                             System.out.println("Mời bạn chọn chức năng");
                             try {
                                 luaChon1 = sc.nextInt();
-                                if (luaChon1<0 || luaChon1 >4) throw new Exception();
+                                if (luaChon1 < 0 || luaChon1 > 4) throw new Exception();
                                 check1 = true;
                             } catch (InputMismatchException e) {
                                 System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
@@ -114,7 +113,7 @@ public class Main {
                                     System.out.println("Mời bạn chọn chức năng");
                                     try {
                                         luaChon2 = sc.nextInt();
-                                        if (luaChon2<0 || luaChon2 >9) throw new Exception();
+                                        if (luaChon2 < 0 || luaChon2 > 9) throw new Exception();
                                         check2 = true;
                                     } catch (InputMismatchException e) {
                                         System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
@@ -129,8 +128,7 @@ public class Main {
                                     System.out.println(ANSI_BLUE + "====Danh sách phòng====" + ANSI_RESET);
                                     qlPhong.hienThi();
 
-                                }
-                                else if (luaChon2 == 2) {
+                                } else if (luaChon2 == 2) {
                                     System.out.println("Mời nhập thông tin phòng mới");
                                     int phongSo = -1;
                                     boolean check3 = false;
@@ -159,10 +157,10 @@ public class Main {
                                             sc.nextLine();
                                         }
                                     }
-                                    System.out.println("Nhập vào trạng thái của phòng (Còn Phòng" + ANSI_RED + "(Con)" + ANSI_RESET + "/Hết Phòng" + ANSI_RED+ "(Het)"+ ANSI_RESET +")");
+                                    System.out.println("Nhập vào trạng thái của phòng (Còn Phòng" + ANSI_RED + "(Con)" + ANSI_RESET + "/Hết Phòng" + ANSI_RED + "(Het)" + ANSI_RESET + ")");
                                     String trangThai = nhapChu.nextLine();
 
-                                    Phong phong = new Phong(phongSo,loaiPhong,giaPhong,trangThai);
+                                    Phong phong = new Phong(phongSo, loaiPhong, giaPhong, trangThai);
 
                                     System.out.println("Bạn có muốn thêm Phòng này vào danh sách phòng mới không?" + ANSI_RED + "[Chọn: Y/E(Exit) hoặc nhập bất kỳ để không thêm]" + ANSI_RESET);
 //                System.out.println(ANSI_RED + "NOTE: Nhập 0 lần đầu tiên để hiện thị phòng có sẵn trước khi thêm phòng mới, nếu không sẽ mất toàn bộ dữ liệu!" + ANSI_RESET);
@@ -170,13 +168,12 @@ public class Main {
                                     result = nhapChu1.next().charAt(0);
                                     if (result == a) {
                                         qlPhong.them(phong);
-                                        GhiDocFile1.writeToFile("KtraMD2.csv",qlPhong.phongList);
+                                        GhiDocFile1.writeToFile("KtraMD2.csv", qlPhong.phongList);
                                     }
                                     if (result == b) {
                                         System.exit(0);
                                     }
-                                }
-                                else if (luaChon2 == 3) {
+                                } else if (luaChon2 == 3) {
 
                                     int soPhongS = -1;
                                     boolean check4 = false;
@@ -223,12 +220,11 @@ public class Main {
                                     System.out.println("Nhập trạng thái mới cho Phòng này là:");
                                     String trangThai = nhapChu.nextLine();
 
-                                    Phong phong1 = new Phong(soPhongM,loaiPhong,giaPhong,trangThai);
-                                    qlPhong.suaPhongSo(soPhongS,phong1);
-                                    GhiDocFile1.writeToFile("KtraMD2.csv",qlPhong.phongList);
+                                    Phong phong1 = new Phong(soPhongM, loaiPhong, giaPhong, trangThai);
+                                    qlPhong.suaPhongSo(soPhongS, phong1);
+                                    GhiDocFile1.writeToFile("KtraMD2.csv", qlPhong.phongList);
 
-                                }
-                                else if (luaChon2 == 4) {
+                                } else if (luaChon2 == 4) {
 
                                     System.out.println("Bạn muốn hiển thị Phòng ở trạng thái Còn Phòng hay Hết Phòng?" + ANSI_RED + "[Chọn: C/H/E(Exit) hoặc nhập bất kỳ để thoát]" + ANSI_RESET);
                                     char result, a = 'C', b = 'H', c = 'E';
@@ -244,8 +240,7 @@ public class Main {
                                         System.exit(0);
                                     }
 
-                                }
-                                else if (luaChon2 == 5) {
+                                } else if (luaChon2 == 5) {
 
                                     int soPhongCN = -1;
                                     boolean check7 = false;
@@ -266,18 +261,17 @@ public class Main {
 
                                     if (result == a) {
                                         qlPhong.chuyensoPHetsangCon(soPhongCN);
-                                        GhiDocFile1.writeToFile("KtraMD2.csv",qlPhong.phongList);
+                                        GhiDocFile1.writeToFile("KtraMD2.csv", qlPhong.phongList);
                                     }
                                     if (result == b) {
                                         qlPhong.chuyensoPConsangHet(soPhongCN);
-                                        GhiDocFile1.writeToFile("KtraMD2.csv",qlPhong.phongList);
+                                        GhiDocFile1.writeToFile("KtraMD2.csv", qlPhong.phongList);
                                     }
                                     if (result == c) {
                                         System.exit(0);
                                     }
 
-                                }
-                                else if (luaChon2 == 6) {
+                                } else if (luaChon2 == 6) {
 
                                     int phongSo = -1;
                                     boolean check8 = false;
@@ -293,16 +287,13 @@ public class Main {
                                     }
                                     qlPhong.timKiemPhongSo(phongSo);
 
-                                }
-                                else if (luaChon2 == 7) {
+                                } else if (luaChon2 == 7) {
 
                                     System.out.println("Nhập vào giá Phòng cần tìm");
                                     String giaPhong = nhapChu.nextLine();
                                     qlPhong.timKiemPhongGia(giaPhong);
 
-                                }
-
-                                else if (luaChon2 == 8) {
+                                } else if (luaChon2 == 8) {
                                     int giaPhongThap = -1;
                                     boolean check50 = false;
                                     while (!check50) {
@@ -327,10 +318,8 @@ public class Main {
                                             sc.nextLine();
                                         }
                                     }
-                                    qlPhong.timKiemKhoangGia(giaPhongThap,giaPhongCao);
-                                }
-
-                                else if (luaChon2 == 9) {
+                                    qlPhong.timKiemKhoangGia(giaPhongThap, giaPhongCao);
+                                } else if (luaChon2 == 9) {
 
                                     System.out.println("=====Menu Chọn Phòng====");
                                     System.out.println("0 - Thoát");
@@ -348,8 +337,7 @@ public class Main {
 
                             } while (luaChon2 != 0);
 
-                        }
-                        else if (luaChon1 == 2) {
+                        } else if (luaChon1 == 2) {
 
                             QLHoaDon qlHoaDon = new QLHoaDon();
                             QLPhong qlPhong1 = new QLPhong();
@@ -372,7 +360,7 @@ public class Main {
                                     System.out.println("Mời bạn chọn chức năng");
                                     try {
                                         luaChon3 = sc.nextInt();
-                                        if (luaChon3<0 || luaChon3>7) throw new Exception();
+                                        if (luaChon3 < 0 || luaChon3 > 7) throw new Exception();
                                         check12 = true;
                                     } catch (InputMismatchException e) {
                                         System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
@@ -387,8 +375,7 @@ public class Main {
                                     System.out.println(ANSI_BLUE + "====Danh sách hóa đơn!====" + ANSI_RESET);
                                     qlHoaDon.hienThiFull();
 
-                                }
-                                else if (luaChon3 == 2) {
+                                } else if (luaChon3 == 2) {
 
                                     System.out.println("Mời nhập vào thông tin hóa đơn");
                                     System.out.println("Mời nhập số CMND của khách chơi phòng");
@@ -439,11 +426,10 @@ public class Main {
                                     qlPhong1.timKiemHetPhong();
                                     int idOfPhong1 = sc.nextInt();
                                     Phong phong5 = qlPhong1.timKiemTheoPhong(idOfPhong1);
-                                    qlHoaDon.them(new HoaDon(soCMND,ten,tgVao,tgRa,tAnUong,phong5));
-                                    GhiDocFile2.writeToFile("KtraMD2_HD.csv",qlHoaDon.getHoaDonList());
+                                    qlHoaDon.them(new HoaDon(soCMND, ten, tgVao, tgRa, tAnUong, phong5));
+                                    GhiDocFile2.writeToFile("KtraMD2_HD.csv", qlHoaDon.getHoaDonList());
 
-                                }
-                                else if (luaChon3 == 3) {
+                                } else if (luaChon3 == 3) {
 
                                     System.out.println("Mời nhập số CMND trong hóa đơn cần sửa");
                                     String soCMNDTim = nhapChu.nextLine();
@@ -495,10 +481,9 @@ public class Main {
                                     qlPhong1.timKiemHetPhong();
                                     int idOfPhong2 = sc.nextInt();
                                     Phong phong10 = qlPhong1.timKiemTheoPhong(idOfPhong2);
-                                    qlHoaDon.suaHoaDon(soCMNDTim,new HoaDon(soCMNDS,tenS,tgVaoS,tgRaS,tAnUongS,phong10));
+                                    qlHoaDon.suaHoaDon(soCMNDTim, new HoaDon(soCMNDS, tenS, tgVaoS, tgRaS, tAnUongS, phong10));
 
-                                }
-                                else if (luaChon3 == 4) {
+                                } else if (luaChon3 == 4) {
                                     int tGianThap = -1;
                                     boolean check20 = false;
                                     while (!check20) {
@@ -525,10 +510,9 @@ public class Main {
                                         }
                                     }
 
-                                    qlHoaDon.timKiemKhoangTGian(tGianThap,tGianCao);
+                                    qlHoaDon.timKiemKhoangTGian(tGianThap, tGianCao);
 
-                                }
-                                else if (luaChon3 == 5) {
+                                } else if (luaChon3 == 5) {
                                     int sum = 0;
                                     System.out.println("Nhập vào số CMND của khách");
                                     String soCMND = nhapChu.nextLine();
@@ -536,28 +520,24 @@ public class Main {
                                         System.out.println("Nhập số phòng khách vào mua vui: ");
                                         qlHoaDon.timKiemCMND1(soCMND);
                                         int idOfPhong = sc.nextInt();
-                                        if(qlPhong1.timKiemPhongSo1(idOfPhong) != -1) {
-                                            sum = QLPhong.phongList.get(qlPhong1.timKiemPhongSo1(idOfPhong)).getGiaPhong()*(qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).getTgRa() - qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).getTgVao()) + qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).gettAnUong();
+                                        if (qlPhong1.timKiemPhongSo1(idOfPhong) != -1) {
+                                            sum = QLPhong.phongList.get(qlPhong1.timKiemPhongSo1(idOfPhong)).getGiaPhong() * (qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).getTgRa() - qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).getTgVao()) + qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).gettAnUong();
                                             System.out.println("Tổng tiền khách phải nôn ra là: " + sum);
 
                                             qlPhong1.chuyensoPHetsangCon(idOfPhong);
-                                            GhiDocFile1.writeToFile("KtraMD2.csv",qlPhong1.phongList);
+                                            GhiDocFile1.writeToFile("KtraMD2.csv", qlPhong1.phongList);
                                             qlHoaDon.xoaHD(soCMND);
 
-                                        }
-                                        else {
+                                        } else {
                                             System.out.println("Nhập sai phòng");
                                         }
-                                    }
-                                    else {
+                                    } else {
                                         System.out.println("Nhập sai số CMND");
                                     }
 
-                                }
-                                else if (luaChon3 == 6) {
+                                } else if (luaChon3 == 6) {
 
-                                }
-                                else if (luaChon3 == 7) {
+                                } else if (luaChon3 == 7) {
 
                                     System.out.println("=====Menu Hóa Đơn====");
                                     System.out.println("0 - Thoát");
@@ -574,21 +554,10 @@ public class Main {
                             } while (luaChon3 != 0);
 
 
+                        } else if (luaChon1 == 3) {
 
 
-
-
-
-
-
-                        }
-                        else if (luaChon1 == 3) {
-
-
-
-
-                        }
-                        else if (luaChon1 == 4) {
+                        } else if (luaChon1 == 4) {
                             System.out.println("=====Menu chương trình====");
                             System.out.println("0 - Thoát chương trình");
                             System.out.println("1 - Quản lý phòng Vũ Trường");
@@ -601,8 +570,7 @@ public class Main {
 
                 }
 
-            }
-            else if (luaChon == 3) {
+            } else if (luaChon == 3) {
 
                 System.out.println("Nhập lại tên đăng nhập cũ");
                 String tenDNS = nhapChu.nextLine();
@@ -613,14 +581,12 @@ public class Main {
                 System.out.println("Nhập mật khẩu mới");
                 String matkhauDNM = ckeckRegex.matKhauDK();
 
-                DKDN dkdn1 = new DKDN(tenDNM,matkhauDNM);
-                qldkdn.suaTen(tenDNS,matkhauDNS,dkdn1);
+                DKDN dkdn1 = new DKDN(tenDNM, matkhauDNM);
+                qldkdn.suaTen(tenDNS, matkhauDNS, dkdn1);
 
-            }
-            else if (luaChon == 4) {
+            } else if (luaChon == 4) {
                 qldkdn.hienThi();
-            }
-            else if (luaChon == 5) {
+            } else if (luaChon == 5) {
 
                 System.out.println("=====Menu_ĐăngKý_ĐăngNhập====");
                 System.out.println("0 - Thoát khỏi chương trình");
@@ -635,8 +601,6 @@ public class Main {
         } while (luaChon != 0);
 
     }
-
-
 
 
     public static final String ANSI_CYAN = "\u001B[36m";
