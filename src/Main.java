@@ -1,4 +1,5 @@
 import file.GhiDocFile1;
+import file.GhiDocFile2;
 import manage.QLDKDN;
 import manage.QLHoaDon;
 import manage.QLPhong;
@@ -439,6 +440,7 @@ public class Main {
                                     int idOfPhong1 = sc.nextInt();
                                     Phong phong5 = qlPhong1.timKiemTheoPhong(idOfPhong1);
                                     qlHoaDon.them(new HoaDon(soCMND,ten,tgVao,tgRa,tAnUong,phong5));
+                                    GhiDocFile2.writeToFile("KtraMD2_HD.csv",qlHoaDon.getHoaDonList());
 
                                 }
                                 else if (luaChon3 == 3) {
