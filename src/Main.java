@@ -537,7 +537,11 @@ public class Main {
                                         if(qlPhong1.timKiemPhongSo1(idOfPhong) != -1) {
                                             sum = QLPhong.phongList.get(qlPhong1.timKiemPhongSo1(idOfPhong)).getGiaPhong()*(qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).getTgRa() - qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).getTgVao()) + qlHoaDon.getHoaDonList().get(qlHoaDon.timKiemCMND(soCMND)).gettAnUong();
                                             System.out.println("Tổng tiền khách phải nôn ra là: " + sum);
+
+                                            qlPhong1.chuyensoPHetsangCon(idOfPhong);
+                                            GhiDocFile1.writeToFile("KtraMD2.csv",qlPhong1.phongList);
                                             qlHoaDon.xoaHD(soCMND);
+
                                         }
                                         else {
                                             System.out.println("Nhập sai phòng");
